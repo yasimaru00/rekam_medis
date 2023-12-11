@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone',13);
+
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
 
         DB::table('users')->insert([
             'name' => 'Admin',
-            'phone' => '0000',
+
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
             'role' => 1,
@@ -43,18 +43,36 @@ class CreateUsersTable extends Migration
         // Petugas Registrasi
         DB::table('users')->insert([
             'name' => 'Petugas Registrasi',
-            'phone' => '1234567890123',
-            'email' => 'petugas_registrasi@example.com',
+
+            'email' => 'petugas_registrasi@gmail.com',
             'password' => Hash::make('password'),
             'role' => 2,
             'status' => 1,
         ]);
 
-        // Dokter
+        // Dokter UMUM
         DB::table('users')->insert([
-            'name' => 'Dokter',
-            'phone' => '1234567890123',
-            'email' => 'dokter@example.com',
+            'name' => 'Dokter Umum ',
+
+            'email' => 'dokterumum@gmail.com',
+            'password' => Hash::make('password'),
+            'role' => 3,
+            'status' => 1,
+        ]);
+        // Dokter Gigi
+        DB::table('users')->insert([
+            'name' => 'Dokter Gigi ',
+
+            'email' => 'doktergigi@gmail.com',
+            'password' => Hash::make('password'),
+            'role' => 3,
+            'status' => 1,
+        ]);
+        // Dokter KIA
+        DB::table('users')->insert([
+            'name' => 'Dokter KIA ',
+
+            'email' => 'dokterkia@gmail.com',
             'password' => Hash::make('password'),
             'role' => 3,
             'status' => 1,
@@ -63,8 +81,8 @@ class CreateUsersTable extends Migration
         // Petugas Obat
         DB::table('users')->insert([
             'name' => 'Petugas Obat',
-            'phone' => '1234567890123',
-            'email' => 'petugas_obat@example.com',
+
+            'email' => 'petugas_obat@gmail.com',
             'password' => Hash::make('password'),
             'role' => 4,
             'status' => 1,

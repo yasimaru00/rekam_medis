@@ -19,7 +19,7 @@ class CreateObatTable extends Migration
             $table->string('nama');
             $table->string('satuan');
             $table->integer('stok');
-            $table->string('foto')->nullable();
+            // $table->string('foto')->nullable();
             $table->integer('harga')->default(0);
             $table->integer('is_bpjs')->default(1);
             $table->timestamps();

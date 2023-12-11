@@ -10,7 +10,7 @@
 @include('rekam.partial.modal-resep-obat')
 
 {{-- DATA --}}
-    <div class="row">   
+    <div class="row">
         <div class="col-xl-12">
             <div class="row">
                 <div class="col-sm-12 col-sm-5 col-lg-5">
@@ -35,7 +35,7 @@
                                         $now = \Carbon\Carbon::now();
                                     @endphp
                                     <h4 class="fs-14 font-w600 mb-1">{{"Usia : ".$b_day->diffInYears($now) }}</h4>
-                                    
+
                                     <h4 class="fs-14 font-w600 mb-1">{{$pasien->jk.", ".$pasien->status_menikah}}</h4>
                                     <span class="fs-14">{{$pasien->alamat_lengkap}}</span>
                                     <span class="fs-14">{{$pasien->keluhan.", ".$pasien->kecamatan.", ".$pasien->kabupaten.", ".$pasien->kewarganegaraan}}</span>
@@ -45,10 +45,10 @@
                                         <a href="{{Route('rekam.gigi.odontogram',$pasien->id)}}" style="width: 120px"
                                             class="btn-rounded btn-info btn-xs "><i class="fa fa-eye"></i> Odontogram</a>
                                     @endif
-                                    
+
                                 </div>
                             </div>
-                         
+
                         </div>
                     </div>
                 </div>
@@ -59,18 +59,18 @@
                             <div class="dropdown">
                                  @if ($rekamLatest)
                                     {!! $rekamLatest->status_display() !!}
-                                @endif 
+                                @endif
                                 @if (auth()->user()->role_display()=="Admin" || auth()->user()->role_display()=="Pendaftaran")
                                 <a href="{{Route('pasien.edit',$pasien->id)}}" style="width: 120px"
                                     class="btn-rounded btn-info btn-xs "><i class="fa fa-pencil"></i> Edit Pasien</a>
                                 @endif
-                              
-                                
+
+
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="row align-items-center">
-                               
+
                                 <div class="col-xl-12 col-xxl-6 col-sm-6">
                                     <div class="d-flex mb-3 align-items-center">
                                         <span class="fs-12 col-6 p-0 text-black">
@@ -83,7 +83,7 @@
                                            <p>{{$pasien->no_hp}}</p>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="d-flex align-items-center">
                                         <span class="fs-12 col-6 p-0 text-black">
                                             <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,11 +95,11 @@
                                            @if ($rekamLatest)
                                             <p>{{$rekamLatest->cara_bayar}}</p>
                                             <p>{{$pasien->no_bpjs}}</p>
-                                           @else 
+                                           @else
                                             <p>{{$pasien->cara_bayar}}</p>
                                             <p>{{$pasien->no_bpjs}}</p>
                                            @endif
-                                           
+
                                         </div>
                                     </div>
                                     <div class="d-flex mb-3 align-items-center">
@@ -123,13 +123,13 @@
                                         <div class="col-8 p-0">
                                           @if ($pasien->general_uncent != null)
                                             <a style="width: 120px"
-                                            class="btn-rounded btn-info btn-xs " href="{{$pasien->getGeneralUncent()}}" 
+                                            class="btn-rounded btn-info btn-xs " href="{{$pasien->getGeneralUncent()}}"
                                             target="__BLANK" view>Lihat Data</a>
 
-                                          @else 
+                                          @else
                                             Belum Tersedia
                                           @endif
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +138,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
         <div class="col-sm-12">
@@ -175,21 +175,21 @@
                                     <span class="btn-icon-right"><i class="fa fa-check"></i></span>
                                 </a>
                            @endif
-                       
+
                         @endif
                     @endif
-                    
+
                 </div>
                 <div class="card-body">
-                   
-                    <div class="table-responsive card-table"> 
+
+                    <div class="table-responsive card-table">
                         <div class="form-group col-lg-6" style="float: right">
                             <form method="get" action="{{ url()->current() }}">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" class="form-control gp-search"
                                         name="keyword" value="{{request('keyword')}}" placeholder="Cari tanggal periksa" value="" autocomplete="off">
-                                       
+
                                     </div>
                                     <div class="col-md-6">
                                         <select name="poli" id="poli" class="form-control"  onchange="this.form.submit()">
@@ -197,21 +197,21 @@
                                             @foreach ($poli as $item)
                                                 @if ($rekamLatest)
                                                     @if (request('poli') == $item->nama)
-                                                    <option value="{{$item->nama}}" selected>{{$item->nama}}</option>  
-                                                    @else 
+                                                    <option value="{{$item->nama}}" selected>{{$item->nama}}</option>
+                                                    @else
                                                     <option value="{{$item->nama}}">{{$item->nama}}</option>
                                                     @endif
-                                                @else 
+                                                @else
                                                     <option value="{{$item->nama}}">{{$item->nama}}</option>
-        
+
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                
+
                             </form>
-        
+
                         </div>
                         <table class="table table-responsive-md table-bordered">
                             <thead>
@@ -240,7 +240,7 @@
                                             @foreach ($row->gigi() as $item)
                                                 <li>Gigi {{$item->elemen_gigi}} : {{$item->pemeriksaan}}</li>
                                             @endforeach
-                                        @else 
+                                        @else
                                             {!! $row->pemeriksaan !!}
                                           @if ($row->pemeriksaan_file !=null)
                                               <br>
@@ -254,14 +254,14 @@
                                             @foreach ($row->gigi() as $item)
                                                 <li>{{$item->diagnosa.", ".$item->diagnosis->name_id}}</li>
                                             @endforeach
-                                        @else 
+                                        @else
                                             {{-- {{$row->diagnosa}} --}}
                                                 <table>
                                                     @foreach ($row->diagnosa() as $item)
                                                     <tr>
                                                         <td> {{$item->diagnosis->code}}</td>
                                                         <td>
-                                                            
+
                                                         @if (($row->status<=2))
                                                             <a href="{{Route('rekam.diagnosa.delete',$item->id)}}" class="btn btn-danger shadow btn-xs sharp">
                                                                 <i class="fa fa-trash"></i>   </a>
@@ -274,14 +274,14 @@
                                                     @endforeach
 
                                                 </table>
-                                            
+
                                         @endif
                                     <td>
                                         @if ($row->poli=="Poli Gigi")
                                             @foreach ($row->gigi() as $item)
                                                 <li>{{$item->tindak->nama}}</li>
                                             @endforeach
-                                        @else 
+                                        @else
                                              {!! $row->tindakan !!}
                                              @if ($row->tindakan_file !=null)
                                               <br>
@@ -290,11 +290,11 @@
                                             </td>
                                         @endif
                                     <td>
-                                        
+
                                     @if ($row->status!=5 && $row->status!=4)
                                     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
                                        @if ($row->poli!="Poli Gigi")
-                                            @if (auth()->user()->role_display() == "Dokter" 
+                                            @if (auth()->user()->role_display() == "Dokter"
                                             || auth()->user()->role_display() == "Admin"
                                             || auth()->user()->role_display() == "Pendaftaran")
                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#addPemeriksaan"
@@ -302,30 +302,30 @@
                                                 data-pemeriksaan="{{$row->pemeriksaan}}" style="width: 120px"
                                                 class="btn-rounded btn-info btn-xs addPemeriksaan"><i class="fa fa-pencil"></i> Object</a>
                                             @endif
-                                                
+
                                             @if (auth()->user()->role_display() == "Dokter" || auth()->user()->role_display() == "Admin")
-                                                <a href="javascript:void(0)" data-toggle="modal" 
+                                                <a href="javascript:void(0)" data-toggle="modal"
                                                     data-target="#addDiagnosa"
                                                     data-id="{{$row->id}}" data-tanggal="{{$row->tgl_rekam}}"
                                                     data-tindakan="{{$row->tindakan}}" style="width: 120px"
                                                     class="btn-rounded btn-primary btn-xs addDiagnosa">
                                                     <i class="fa fa-pencil"></i>Assessment</a>
-                                                    
-                                                    <a href="javascript:void(0)" data-toggle="modal" 
+
+                                                    <a href="javascript:void(0)" data-toggle="modal"
                                                     data-target="#addTindakan"
                                                     data-id="{{$row->id}}" data-tanggal="{{$row->tgl_rekam}}"
                                                     data-tindakan="{{$row->tindakan}}" style="width: 120px"
                                                     class="btn-rounded btn-success btn-xs addTindakan">
                                                     <i class="fa fa-pencil"></i>Plan</a>
                                             @endif
-                                        @else 
-                                            @if (auth()->user()->role_display() == "Dokter" 
+                                        @else
+                                            @if (auth()->user()->role_display() == "Dokter"
                                             || auth()->user()->role_display() == "Admin")
                                                 <a href="{{Route('rekam.gigi.add',$row->id)}}" style="width: 120px"
                                                 class="btn-rounded btn-info btn-xs "><i class="fa fa-pencil"></i> Rekam</a>
 
                                                 @if ($row->gigi()->count() > 0)
-                                                    <a href="javascript:void(0)" data-toggle="modal" 
+                                                    <a href="javascript:void(0)" data-toggle="modal"
                                                     data-target="#addResep"
                                                     data-id="{{$row->id}}" data-tanggal="{{$row->tgl_rekam}}"
                                                     data-resep="{{$row->resep_obat}}" style="width: 120px"
@@ -334,25 +334,25 @@
                                                 @endif
 
                                             @endif
-                                        @endif 
-                                        
-                                       
+                                        @endif
+
+
                                     </div>
                                     @else
                                         <div class="d-flex">
                                             <a href="{{Route('obat.pengeluaran',$row->id)}}" style="width: 120px" class="btn-rounded btn-primary btn-xs ">
                                                 <i class="fa fa-eye"></i> Obat</a>
-                                        </div>                                                   
+                                        </div>
                                     @endif
                                     </td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                            
+
                         </table>
                         <div class="dataTables_info" id="example_info" role="status"
                         aria-live="polite">Showing {{$rekams->firstItem()}} to {{$rekams->perPage() * $rekams->currentPage()}} of {{$rekams->total()}} entries</div>
-   
+
                        {{ $rekams->appends(request()->except('page'))->links() }}
                     </div>
                 </div>
@@ -380,17 +380,17 @@
                 {data: 'name_id', name: 'name_id'}
             ]
         });
-        
+
     });
-    
+
     CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
     CKEDITOR.replace('editor', {
         height  : '250px',
         // filebrowserUploadUrl: "{{route('rekam.upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form',
         toolbarGroups: [
-		{ name: 'document',	   groups: [ 'mode', 'document' ] },		
- 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			
+		{ name: 'document',	   groups: [ 'mode', 'document' ] },
+ 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         // { name: 'insert', groups: [ 'Image'] },
 	]
     });
@@ -400,8 +400,8 @@
         // filebrowserUploadUrl: "{{route('rekam.upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form',
         toolbarGroups: [
-		{ name: 'document',	   groups: [ 'mode', 'document' ] },		
- 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			
+		{ name: 'document',	   groups: [ 'mode', 'document' ] },
+ 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         // { name: 'insert', groups: [ 'Image'] },
 	]
     });
@@ -411,12 +411,12 @@
         // filebrowserUploadUrl: "{{route('rekam.upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form',
         toolbarGroups: [
-		{ name: 'document',	   groups: [ 'mode', 'document' ] },		
- 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			
+		{ name: 'document',	   groups: [ 'mode', 'document' ] },
+ 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         // { name: 'insert', groups: [ 'Image'] },
 	]
     });
-   
+
     $(document).on("click", ".addPemeriksaan", function () {
         var rekamId = $(this).data('id');
         var pemeriksaan = $(this).data('pemeriksaan');
@@ -449,7 +449,7 @@
                             '<td>:</td>'+
                             '<td>&nbsp;</td>'+
                         '</tr>'+
-                        
+
                     '</tbody>'+
                 '</table>'+
                 '<p>&nbsp;</p>';
@@ -459,27 +459,25 @@
     });
 
     $(document).on("click", ".pilihIcd", function () {
-        var diagnosa_id = $(this).data('id');
-        var rekam_id = $("#rekam_id").val();
-        var pasien_id = $("#pasien_id").val();
-        var token = '{{csrf_token()}}';
-        $("#addDiagnosa").modal('hide');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });   
-        $.ajax({
-           type:'POST',
-           url:"{{ route('diagnosa.update') }}",
-           data:{rekam_id:rekam_id, pasien_id:pasien_id, diagnosa:diagnosa_id,_token:token},
-           success:function(data){
-                location.reload();
-           }
-        });
-
-        
+    var diagnosa_id = $(this).data('id');
+    var rekam_id = $("#rekam_id").val();
+    var pasien_id = $("#pasien_id").val();
+    var token = '{{csrf_token()}}';
+    $("#addDiagnosa").modal('hide');
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
+    $.ajax({
+       type:'POST',
+       url:"{{ route('diagnosa.update') }}",
+       data:{rekam_id:rekam_id, pasien_id:pasien_id, diagnosa:diagnosa_id,_token:token},
+       success:function(data){
+            location.reload();
+       }
+    });
+});
 
     $(document).on("click", ".addTindakan", function () {
         var rekamId = $(this).data('id');
@@ -489,12 +487,15 @@
     });
 
     $(document).on("click", ".addDiagnosa", function () {
-        var rekamId = $(this).data('id');
-        var diagnosa = $(this).data('diagnosa');
-        $(".modal-body #rekamId").val( rekamId );
+    var rekamId = $(this).data('id');
+    var diagnosa = $(this).data('diagnosa');
+    $(".modal-body #rekamId").val( rekamId );
+    // if (CKEDITOR.instances.editor) {
         CKEDITOR.instances.editor.setData( diagnosa );
-
-    });
+    // } else {
+    //     console.log("CKEditor is not initialized");
+    // }
+});
 
     $(document).on("click", ".addResep", function () {
         var rekamId = $(this).data('id');
@@ -504,6 +505,6 @@
 
     });
 
-  
+
 </script>
 @endsection

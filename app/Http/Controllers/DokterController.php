@@ -23,7 +23,7 @@ class DokterController extends Controller
 {
     $this->validate($request,[
         'nama' => 'required',
-        'no_hp' => 'required',
+        // 'no_hp' => 'required',
         'poli' => 'required',
         // 'password' => 'required'
     ]);
@@ -42,8 +42,8 @@ class DokterController extends Controller
         Dokter::create([
             'nip' => $request->nip,
             'nama' => $request->nama,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat, 
+            // 'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
             'poli' => $request->poli,
             'status' => 1
         ]);
@@ -58,8 +58,10 @@ class DokterController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
-            'no_hp' => 'required',
+            // 'no_hp' => 'required',
             'poli' => 'required',
+            'alamat' => 'required',
+
             'password' => 'required'
         ]);
         DB::beginTransaction();
@@ -70,7 +72,8 @@ class DokterController extends Controller
             $user = User::find($dokter->user_id);
             $user->update([
                 'name' => $request->nama,
-                'phone' => $request->no_hp
+                // 'phone' => $request->no_hp
+                // 'alamat' => $request->alamat,
             ]);
             DB::commit();
             return redirect()->route('dokter')->with('sukses','Data berhasil diperbaharui');

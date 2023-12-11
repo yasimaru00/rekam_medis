@@ -45,14 +45,14 @@
                         style="display: block;">{{$message}}</div>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="text-black font-w500">No HP (Login)*</label>
                         <input type="text" name="no_hp" required class="form-control">
                         @error('no_hp')
                         <div class="invalid-feedback animated fadeInUp"
                         style="display: block;">{{$message}}</div>
                         @enderror
-                    </div>
+                    </div> --}}
                     {{-- <div class="form-group">
                         <label class="text-black font-w500">Password Login*</label>
                         <input type="password" name="password" required class="form-control">
@@ -109,7 +109,7 @@
                                 <th>No</th>
                                 <th>NIP</th>
                                 <th>Nama Dokter</th>
-                                <th>No. HP</th>
+                                {{-- <th>No. HP</th> --}}
                                 <th>Alamat</th>
                                 <th>Poli</th>
                                 <th>Status</th>
@@ -124,7 +124,7 @@
                                     </td>
                                     <td>{{$row->nip}}</td>
                                     <td>{{$row->nama}}</td>
-                                    <td>{{$row->no_hp}}</td>
+                                    {{-- <td>{{$row->no_hp}}    </td> --}}
                                     <td>{{$row->alamat}}</td>
                                     <td>{{$row->poli}}</td>
                                     <td>{{$row->status_display()}}</td>
@@ -191,7 +191,7 @@
                                                                 {{ csrf_field() }}
                                                                 <div class="form-group">
                                                                     <label class="text-black font-w500">NIP</label>
-                                                                    <input type="text" name="nip" class="form-control">
+                                                                    <input type="text" name="nip" class="form-control"  value="{{$row->nip}}">
                                                                     @error('nip')
                                                                     <div class="invalid-feedback animated fadeInUp"
                                                                     style="display: block;">{{$message}}</div>
@@ -221,14 +221,14 @@
                                                                     style="display: block;">{{$message}}</div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="form-group">
+                                                                {{-- <div class="form-group">
                                                                     <label class="text-black font-w500">No HP (Login)*</label>
                                                                     <input type="text" name="no_hp" required class="form-control" value="{{$row->no_hp}}">
                                                                     @error('no_hp')
                                                                     <div class="invalid-feedback animated fadeInUp"
                                                                     style="display: block;">{{$message}}</div>
                                                                     @enderror
-                                                                </div>
+                                                                </div> --}}
 
                                                                 <div class="form-group">
                                                                     <label class="text-black font-w500">Alamat</label>

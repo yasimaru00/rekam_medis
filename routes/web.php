@@ -21,11 +21,11 @@ Route::get('/', [AuthController::class, 'page_login'])->name('login');
 Route::post('/login', [AuthController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('test', function () {
-    StatusRekamUpdate::dispatch("5","REG002","INI TEST AJA","http://sss","25 05 1993");
-	// event(new App\Events\StatusRekamUpdate("082240300501"));
-	return "Event has been sent!";
-});
+// Route::get('test', function () {
+//     StatusRekamUpdate::dispatch("5","REG002","INI TEST AJA","http://sss","25 05 1993");
+// 	// event(new App\Events\StatusRekamUpdate("082240300501"));
+// 	return "Event has been sent!";
+// });
 
 Route::get('/odontogram/{id}', [RekamGigiController::class, 'odontogram'])->name('odontogram');
 

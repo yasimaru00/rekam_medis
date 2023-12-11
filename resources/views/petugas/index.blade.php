@@ -27,14 +27,14 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label class="text-black font-w500">No HP (Login)*</label>
                         <input type="text" name="phone" required class="form-control">
                         @error('phone')
                         <div class="invalid-feedback animated fadeInUp"
                         style="display: block;">{{$message}}</div>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label class="text-black font-w500">Password Login*</label>
                         <input type="password" name="password" required class="form-control">
@@ -97,7 +97,7 @@
 
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>No. HP</th>
+                                {{-- <th>No. HP</th> --}}
                                 <th>Role</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
@@ -110,7 +110,7 @@
                                         {{$key+1}}
                                     </td>
                                     <td>{{$row->name}}</td>
-                                    <td>{{$row->phone}}</td>
+                                    {{-- <td>{{$row->phone}}</td> --}}
                                     <td>{{$row->role_display()}}</td>
                                     <td>{{$row->status_display()}}</td>
                                     <td>
@@ -184,14 +184,14 @@
                                                                     @enderror
                                                                 </div>
 
-                                                                <div class="form-group">
+                                                                {{-- <div class="form-group">
                                                                     <label class="text-black font-w500">No HP (Login)*</label>
                                                                     <input type="text" name="phone" required class="form-control" value="{{$row->phone}}">
                                                                     @error('phone')
                                                                     <div class="invalid-feedback animated fadeInUp"
                                                                     style="display: block;">{{$message}}</div>
                                                                     @enderror
-                                                                </div>
+                                                                </div> --}}
 
                                                                 <div class="form-group">
                                                                     <label class="text-black font-w500">Role Akses*</label>

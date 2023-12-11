@@ -14,8 +14,8 @@
                     <input type="hidden" id="pasienId" name="pasien_id" value="{{$pasien->id}}">
                     <div class="form-group">
                         {{-- <textarea name="diagnosa"  required
-                        id="editor"
-                        class="form-control"
+                        id="editor" 
+                        class="form-control" 
                         rows="10"></textarea> --}}
                         <div class="row">
                             <table class="display white-border table-responsive-sm"
@@ -34,13 +34,12 @@
                         <div class="invalid-feedback animated fadeInUp"
                         style="display: block;">{{$message}}</div>
                         @enderror
-
+                       
                     </div>
-
-
+                    
+                   
                 </form>
             </div>
         </div>
     </div>
 </div>
-
